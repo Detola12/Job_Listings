@@ -37,7 +37,7 @@ class JobPolicy
      */
     public function update(User $user, Job $job): bool
     {
-        //
+        return $user->id === $job->employer->user->id;
     }
 
     /**

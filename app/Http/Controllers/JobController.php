@@ -80,7 +80,7 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        return view('jobs.edit');
+        return view('jobs.edit', ['jobs' => $job]);
     }
 
     /**
@@ -88,7 +88,15 @@ class JobController extends Controller
      */
     public function update(UpdateJobRequest $request, Job $job)
     {
-        //
+
+        $job->title = $request->title;
+        $job->schedule = $request->schedule;
+        $job->salary = $request->salary;
+        $job->featured = $request->has('featured');
+        $job->url = $request->url;
+        $job->location = $request->location;
+        $job->save();
+        return redirect('/');
     }
 
     /**

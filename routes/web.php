@@ -10,8 +10,8 @@ Route::get('/tags/{tag:name}', \App\Http\Controllers\TagController::class);
 Route::middleware('auth')->group(function () {
     Route::get('/jobs/create', [\App\Http\Controllers\JobController::class, 'create']);
     Route::post('/jobs/create', [\App\Http\Controllers\JobController::class, 'store']);
-    Route::get('/jobs/edit/{job:id}', [\App\Http\Controllers\JobController::class, 'edit']);
-    Route::post('/jobs/edit/{job:id}', [\App\Http\Controllers\JobController::class, 'update']);
+    Route::get('/jobs/edit/{job:id}', [\App\Http\Controllers\JobController::class, 'edit'])->can('update', 'job')->name('job.edit');
+    Route::post('/jobs/edit/{job:id}', [\App\Http\Controllers\JobController::class, 'update'])->name('job.update');
 });
 Route::middleware('guest')->group(function (){
     Route::get('/register', [\App\Http\Controllers\RegisteredUserController::class, 'create']);

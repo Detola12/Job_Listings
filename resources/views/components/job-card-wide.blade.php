@@ -7,11 +7,17 @@
 
     <div class="flex-1 flex flex-col">
         <a href="#" class="self-start text-sm text-gray-400">{{ $job->employer->name }}</a>
+        <p class="text-gray-400 text-sm ">{{ $job->schedule }} <span class="text-sm"></span></p>
         <a href="{{ $job->url }}">
-            <h3 class="font-bold text-xl mt-2 group-hover:text-blue-600 transition-colors duration-500">{{ $job->title }}</h3>
+            <h3 class="font-bold text-xl group-hover:text-blue-600 transition-colors duration-500">{{ $job->title }}  </h3>
         </a>
-        <p class="text-xs text-gray-600">{{ $job->location }}</p>
-        <p class="text-gray-400 text-sm mt-auto">{{ $job->salary }}</p>
+        <p class="text-xs text-gray-600">{{ $job->location }}
+            @can('update', $job)
+            <a href="{{ route('job.edit', $job->id) }}" class="ms-[550px] border border-white/10 px-9 py-2 hover:border-blue-800 transition-colors duration-300 rounded-xl ">Edit</a>
+
+            @endcan
+        </p>
+        <p class="text-gray-400 text-sm mt-auto ">{{ $job->salary }} </p>
 
     </div>
     <div>

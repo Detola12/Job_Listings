@@ -14,10 +14,10 @@
         <nav class="flex justify-between items-center py-4 border-b border-white/10">
             <div><a href="/">Logo</a></div>
             <div class="space-x-6 font-bold">
-                <a href="">Jobs</a>
-                <a href="">Careers</a>
-                <a href="">Salaries</a>
-                <a href="">Companies</a>
+                <a href="{{ route('home') }}">Jobs</a>
+                <a href="" class="pointer-events-none text-white/30">Careers</a>
+                <a href="" class="pointer-events-none text-white/30">Salaries</a>
+                <a href="{{ route('companies') }}">Companies</a>
             </div>
             @auth()
             <div class="space-x-6 flex">
